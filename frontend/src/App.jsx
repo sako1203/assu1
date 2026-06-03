@@ -9,7 +9,7 @@ import Auth from "./pages/Auth.jsx";
 import AgencesPage from "./pages/AgencesPage.jsx";
 
 import FormIndividuel from "./pages/forms/FormIndividuel.jsx";
-import FormServiceAT from "./pages/forms/FormServiceAT.jsx";
+import FormServiceAT from "./pages/forms/FormServiceAt.jsx";
 import FormResponsable from "./pages/forms/FormResponsable.jsx";
 import FormMedecin from "./pages/forms/FormMedecin.jsx";
 import FormEnqueteur from "./pages/forms/FormEnqueteur.jsx";
