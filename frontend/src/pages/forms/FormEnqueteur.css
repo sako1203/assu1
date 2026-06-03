@@ -1,0 +1,208 @@
+.enqueteur-form {
+  width: 650px;
+  max-width: 100%;
+  margin: 50px auto;
+  padding: 40px 45px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+  animation: fadeUp 0.6s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.enqueteur-form:hover {
+  box-shadow: 0 25px 60px rgba(0,0,0,0.18);
+}
+
+.enqueteur-form h2 {
+  text-align: center;
+  color: #1e40af;
+  margin-bottom: 10px;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.enqueteur-form p {
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+/* Champs */
+.enqueteur-form input,
+.enqueteur-form textarea,
+.enqueteur-form select {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  border: 2px solid #e5e7eb;
+  font-size: 14px;
+  background: #f9fafb;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  color: #1f2937;
+}
+
+.enqueteur-form input:focus,
+.enqueteur-form textarea:focus,
+.enqueteur-form select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+/* Textarea */
+.enqueteur-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Bouton */
+.enqueteur-form button {
+  width: 100%;
+  padding: 15px 20px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.enqueteur-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+}
+
+/* Autocomplete victime */
+.autocomplete-container {
+  position: relative;
+  width: 100%;
+}
+
+.autocomplete-container input {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  border: 2px solid #e5e7eb;
+  font-size: 14px;
+  background: #f9fafb;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  color: #1f2937;
+}
+
+.autocomplete-container input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.autocomplete-list {
+  list-style: none;
+  padding: 8px 0;
+  margin: 0;
+  border: 2px solid #3b82f6;
+  border-radius: 10px;
+  max-height: 250px;
+  overflow-y: auto;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+  z-index: 1000;
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  margin-top: -12px;
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.autocomplete-list li {
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #1f2937;
+  font-size: 14px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.autocomplete-list li:last-child {
+  border-bottom: none;
+}
+
+.autocomplete-list li:hover {
+  background-color: #3b82f6;
+  color: #ffffff;
+  padding-left: 20px;
+}
+
+/* Animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Notifications List --- */
+.notifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+  max-height: 200px; /* Limite la hauteur pour éviter de surcharger */
+  overflow-y: auto; /* Ajoute un scroll si trop d'éléments */
+  padding-right: 5px; /* Espace pour la scrollbar */
+}
+
+.notification-item {
+  background-color: #e0f2fe;
+  border-left: 4px solid #0ea5e9;
+  color: #075985;
+  padding: 10px 15px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+  animation: slideIn 0.3s ease-out;
+}
+
+.notification-item.info {
+  background-color: #f0f9ff;
+  border-left-color: #3b82f6;
+}
+
+.notification-item:hover {
+  background-color: #bfdbfe; /* Bleu plus clair au survol */
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}

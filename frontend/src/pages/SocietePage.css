@@ -1,0 +1,126 @@
+/* PAGE */
+.societe-page {
+  padding: 30px;
+  background: #f6f7fb;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* HEADER */
+.header {
+  text-align: left;
+}
+
+.header h1 {
+  font-size: 28px;
+  color: #111827;
+  margin-bottom: 5px;
+}
+
+.header p {
+  color: #6b7280;
+}
+
+/* CARD BASE */
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 25px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
+
+/* FORM */
+.form-card form {
+  display: grid;
+  gap: 12px;
+}
+
+.form-card input {
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.form-card input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+.form-card button {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.form-card button:hover {
+  transform: translateY(-2px);
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 15px;
+}
+
+/* SOC CARD */
+.soc-card {
+  background: #ffffff;
+  border: 1px solid #eef0f3;
+  border-radius: 14px;
+  padding: 15px;
+  transition: 0.2s;
+}
+
+.soc-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+/* TOP */
+.soc-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.soc-name {
+  font-weight: 600;
+  color: #111827;
+}
+
+/* DELETE */
+.soc-top button {
+  background: #fee2e2;
+  color: #ef4444;
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.soc-top button:hover {
+  background: #ef4444;
+  color: white;
+}
+
+/* INFO */
+.soc-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 13px;
+  color: #6b7280;
+}

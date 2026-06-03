@@ -1,0 +1,78 @@
+.admin-wrapper {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  background: #111827;
+  color: white;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* 🔥 CONTENU PRINCIPAL */
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;   /* 🔥 enlève espace */
+  margin: 0;    /* 🔥 enlève centrage */
+}
+
+/* TITRE */
+.sidebar h3 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  text-align: center;
+  border-bottom: 1px solid #374151;
+  padding-bottom: 10px;
+}
+
+/* MENU */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin: 5px 0;
+}
+
+/* LIEN */
+.sidebar a {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 6px;
+  color: #d1d5db;
+  text-decoration: none;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+/* HOVER */
+.sidebar a:hover {
+  background: #1f2937;
+  color: white;
+}
+
+/* ACTIVE (optionnel avec NavLink) */
+.sidebar a.active {
+  background: #2563eb;
+  color: white;
+}
+
+/* CONTENU */
+.dashboard-container {
+  flex: 1;
+  background: #f3f4f6;
+  padding: 15px;
+  overflow-y: auto;
+}

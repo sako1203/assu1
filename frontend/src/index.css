@@ -1,0 +1,56 @@
+/* 🌞 MODE CLAIR (par défaut) */
+:root {
+  --bg: #f5f7fa;
+  --text: #222;
+  --card: #ffffff;
+  --border: #ddd;
+  --primary: #007bff;
+}
+#root {
+  position: relative;
+  z-index: 0;
+}
+
+/* 🌙 MODE SOMBRE */
+.dark {
+  --bg: #121212;
+  --text: #f1f1f1;
+  --card: #1e1e1e;
+  --border: #333;
+  --primary: #4dabf7;
+}
+
+/* UTILISATION */
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s;
+}
+
+.dashboard-container,
+.form-container,
+.societe-card {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 15px;
+}
+
+/* boutons */
+button {
+  background: var(--primary);
+  color: white;
+  border: none;
+}
+
+input, select, textarea {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+} 
+body, html, #root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
