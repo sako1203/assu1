@@ -40,7 +40,7 @@ export default function FormMedecin() {
 
   // Charger sociétés
   useEffect(() => {
-    axios.get("http://localhost:5000/api/societe")
+    axios.get("http://assu1-production.up.railway.app/api/societe")
       .then(res => setSocietes(res.data))
       .catch(err => console.error(err));
   }, []);

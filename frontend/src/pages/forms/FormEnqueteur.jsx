@@ -29,7 +29,7 @@ export default function FormEnqueteur() {
 
   // 🔹 Charger toutes les sociétés
   useEffect(() => {
-    axios.get("http://localhost:5000/api/societe")
+    axios.get("http://assu1-production.up.railway.app/api/societe")
       .then(res => setSocietes(res.data))
       .catch(err => console.error("Erreur chargement sociétés:", err));
   }, []);
@@ -37,11 +37,11 @@ export default function FormEnqueteur() {
   // 🔹 Charger les victimes et les alertes médicales
   useEffect(() => {
     const urlMedecin = formData.societe 
-      ? `http://localhost:5000/api/rapport-medecin?societe=${formData.societe}&role=enqueteur`
-      : `http://localhost:5000/api/rapport-medecin?role=enqueteur`;
+      ? `http://assu1-production.up.railway.app/api/rapport-medecin?societe=${formData.societe}&role=enqueteur`
+      : `http://assu1-production.up.railway.app/api/rapport-medecin?role=enqueteur`;
 
     if (formData.societe) {
-      axios.get(`http://localhost:5000/api/declaration-at?societe=${formData.societe}`)
+      axios.get(`http://assu1-production.up.railway.app/api/declaration-at?societe=${formData.societe}`)
         .then(res => {
           console.log("✅ Victimes chargées pour la société:", formData.societe, res.data);
           setVictimes(res.data);

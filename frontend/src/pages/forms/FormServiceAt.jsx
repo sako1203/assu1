@@ -45,7 +45,7 @@ export default function FormServiceAT() {
   // 🔹 Charger les sociétés depuis le backend
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/societe")
+      .get("http://assu1-production.up.railway.app/api/societe")
       .then(res => setSocietes(res.data))
       .catch(err => console.error("Erreur chargement sociétés:", err));
   }, []);
@@ -53,8 +53,8 @@ export default function FormServiceAT() {
   // 🔹 Charger les rapports médicaux (global au début, puis filtré par société)
   useEffect(() => {
     const url = formData.societe 
-      ? `http://localhost:5000/api/rapport-medecin?societe=${formData.societe}&role=service-at`
-      : `http://localhost:5000/api/rapport-medecin?role=service-at`;
+      ? `http://assu1-production.up.railway.app/api/rapport-medecin?societe=${formData.societe}&role=service-at`
+      : `http://assu1-production.up.railway.app/api/rapport-medecin?role=service-at`;
 
     axios.get(url)
       .then(res => {
@@ -99,14 +99,14 @@ export default function FormServiceAT() {
     e.preventDefault();
     try {
       const resDeclaration = await axios.post(
-        "http://localhost:5000/api/declaration-at/create",
+        "http://assu1-production.up.railway.app/api/declaration-at/create",
         formData
       );
       const newDeclarationId = resDeclaration.data._id;
 
       // 🔹 Mettre à jour le RapportMedecin avec l'ID de la nouvelle déclaration
       if (formData.rapport_medecin) {
-        await axios.put(`http://localhost:5000/api/rapport-medecin/${formData.rapport_medecin}`, {
+        await axios.put(`http://assu1-production.up.railway.app/api/rapport-medecin/${formData.rapport_medecin}`, {
           declaration_at: newDeclarationId
         });
       }

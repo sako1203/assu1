@@ -48,7 +48,7 @@ export default function FormResponsable() {
 
   // 🔹 Charger les sociétés
   useEffect(() => {
-    axios.get("http://localhost:5000/api/societe")
+    axios.get("http://assu1-production.up.railway.app/api/societe")
       .then(res => setSocietes(res.data))
       .catch(err => console.error("Erreur chargement sociétés:", err));
   }, []);
@@ -57,7 +57,7 @@ export default function FormResponsable() {
   // 🔹 Charger les victimes (pour l'autocomplete des Déclarations AT existantes)
   useEffect(() => {
     if (formData.societe) {
-      axios.get(`http://localhost:5000/api/declaration-at?societe=${formData.societe}`)
+      axios.get(`http://assu1-production.up.railway.app/api/declaration-at?societe=${formData.societe}`)
         .then(res => setVictimes(res.data))
         .catch(err => console.error("Erreur chargement victimes pour autocomplete:", err));
     } else {
@@ -75,8 +75,8 @@ export default function FormResponsable() {
   // 🔹 Charger les rapports médicaux en attente (pour les notifications)
   useEffect(() => {
     const urlMedecin = formData.societe
-      ? `http://localhost:5000/api/rapport-medecin?societe=${formData.societe}&role=responsable`
-      : `http://localhost:5000/api/rapport-medecin?role=responsable`;
+      ? `http://assu1-production.up.railway.app/api/rapport-medecin?societe=${formData.societe}&role=responsable`
+      : `http://assu1-production.up.railway.app/api/rapport-medecin?role=responsable`;
 
     axios.get(urlMedecin)
       .then(res => {

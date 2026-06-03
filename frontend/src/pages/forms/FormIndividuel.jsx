@@ -6,7 +6,7 @@ export default function FormIndividuel() {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/rapport-medecin")
+    axios.get("http:/assu1-production.up.railway.app//api/rapport-medecin")
       .then(res => {
         const data = Array.isArray(res.data) ? res.data : [res.data];
         setNotifications(data.filter(v => v && v._id));
