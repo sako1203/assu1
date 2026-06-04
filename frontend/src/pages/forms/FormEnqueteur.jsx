@@ -94,10 +94,10 @@ export default function FormEnqueteur() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/rapport-enqueteur", formData);
+      const res = await axios.post("http://assu1-production.up.railway.app/api/rapport-enqueteur", formData);
 
       if (formData.rapport_medecin) {
-        await axios.put(`http://localhost:5000/api/rapport-medecin/${formData.rapport_medecin}`, {
+        await axios.put(`http://assu1-production.up.railway.app/api/rapport-medecin/${formData.rapport_medecin}`, {
           enqueteur_at: res.data._id
         });
       }

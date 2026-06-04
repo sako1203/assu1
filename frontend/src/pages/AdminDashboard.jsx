@@ -637,7 +637,7 @@ export default function AdminDashboard() {
     
     try {
       console.log("🔄 Chargement des données pour la victime (ID):", victimeId);
-      const victimeRes = await axios.get(`http://localhost:5000/api/declaration-at/${victimeId}`);
+      const victimeRes = await axios.get(`http://assu1-production.up.railway.app/api/declaration-at/${victimeId}`);
       const victimeData = victimeRes.data;
       console.log("✅ Données victime chargées (API brute):", victimeData);
       
@@ -656,7 +656,7 @@ export default function AdminDashboard() {
 
       // Charger les certificats depuis la nouvelle collection
       try {
-        const certRes = await axios.get(`http://localhost:5000/api/tableaux/certificats/${victimeId}`);
+        const certRes = await axios.get(`http://assu1-production.up.railway.app/api/tableaux/certificats/${victimeId}`);
         const certs = certRes.data || [];
         
         const initialCert = certs.find(c => c.type === "certificat initial") || { id: 'initial', type: "certificat initial", dateStamp: "", dateEnvoi: "", fromDate: "", toDate: "", duree: 0 };
@@ -678,7 +678,7 @@ export default function AdminDashboard() {
 
       // Charger les quittances depuis la nouvelle collection (Bug fix: axios.get was missing)
       try { 
-        const qRes = await axios.get(`http://localhost:5000/api/tableaux/quittances/${victimeId}`);
+        const qRes = await axios.get(`http://assu1-production.up.railway.app/api/tableaux/quittances/${victimeId}`);
         setQuittances(qRes.data || []);
       } catch (e) {
         // If no quittances are found, it's not an error, just an empty array.
@@ -689,7 +689,7 @@ export default function AdminDashboard() {
 
       // Charger les règlements depuis la nouvelle collection
       try {
-        const rRes = await axios.get(`http://localhost:5000/api/tableaux/reglements/${victimeId}`);
+        const rRes = await axios.get(`http://assu1-production.up.railway.app/api/tableaux/reglements/${victimeId}`);
         setReglements(rRes.data || []);
       } catch (e) {
         console.warn("⚠️ Aucun règlement trouvé:", e);
@@ -698,7 +698,7 @@ export default function AdminDashboard() {
 
       // Charger les corrections backoffice depuis la nouvelle collection
       try {
-        const bRes = await axios.get(`http://localhost:5000/api/tableaux/backoffice/${victimeId}`);
+        const bRes = await axios.get(`http://assu1-production.up.railway.app/api/tableaux/backoffice/${victimeId}`);
         const backofficeData = bRes.data || [];
         if (backofficeData.length > 0) {
           const merged = {};

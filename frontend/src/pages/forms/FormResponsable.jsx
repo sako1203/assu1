@@ -157,11 +157,11 @@ export default function FormResponsable() {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/api/rapport-responsable", formData);
+      const res = await axios.post("http://assu1-production.up.railway.app/api/rapport-responsable", formData);
       
       // Marquer le rapport médecin comme traité par le responsable
       if (formData.rapport_medecin) {
-        await axios.put(`http://localhost:5000/api/rapport-medecin/${formData.rapport_medecin}`, {
+        await axios.put(`http://assu1-production.up.railway.app/api/rapport-medecin/${formData.rapport_medecin}`, {
           responsable_at: res.data._id
         });
       }

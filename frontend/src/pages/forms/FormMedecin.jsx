@@ -75,7 +75,7 @@ export default function FormMedecin() {
         console.log(`  ${key}: ${value}`);
       }
 
-      await axios.post("http://localhost:5000/api/rapport-medecin", data, {
+      await axios.post("http://assu1-production.up.railway.app/api/rapport-medecin", data, {
         headers: { "Content-Type": "multipart/form-data" }
       });
 
