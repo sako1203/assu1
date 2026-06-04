@@ -40,7 +40,7 @@ export default function FormMedecin() {
 
   // Charger sociétés
   useEffect(() => {
-    axios.get("http://assu1-production.up.railway.app/api/societe")
+    axios.get("https://assu1-production.up.railway.app/api/societe")
       .then(res => setSocietes(res.data))
       .catch(err => console.error(err));
   }, []);
@@ -75,7 +75,7 @@ export default function FormMedecin() {
         console.log(`  ${key}: ${value}`);
       }
 
-      await axios.post("http://assu1-production.up.railway.app/api/rapport-medecin", data, {
+      await axios.post("https://assu1-production.up.railway.app/api/rapport-medecin", data, {
         headers: { "Content-Type": "multipart/form-data" }
       });
 

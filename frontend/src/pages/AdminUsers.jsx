@@ -12,7 +12,7 @@ export default function AdminUsers() {
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch("http://assu1-production.up.railway.app/api/users");
+      const res = await fetch("https://assu1-production.up.railway.app/api/users");
       const data = await res.json();
       setUsers(data);
     } catch (err) {
@@ -29,7 +29,7 @@ export default function AdminUsers() {
     if (!window.confirm("Supprimer cet utilisateur ?")) return;
 
     try {
-      const res = await fetch(`http://assu1-production.up.railway.app/api/users/${id}`, {
+      const res = await fetch(`https://assu1-production.up.railway.app/api/users/${id}`, {
         method: "DELETE",
       });
 
@@ -48,7 +48,7 @@ export default function AdminUsers() {
     setMessage("");
 
     try {
-      const res = await fetch("http://assu1-production.up.railway.app/api/users/create", {
+      const res = await fetch("https://assu1-production.up.railway.app/api/users/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

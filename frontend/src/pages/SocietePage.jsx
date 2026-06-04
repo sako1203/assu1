@@ -12,7 +12,7 @@ export default function SocietePage() {
   });
 
   const fetchSocietes = async () => {
-    const res = await axios.get("http://assu1-production.up.railway.app/api/societe");
+    const res = await axios.get("https://assu1-production.up.railway.app/api/societe");
     setSocietes(res.data);
   };
 
@@ -27,7 +27,7 @@ export default function SocietePage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await axios.post("http://assu1-production.up.railway.app/api/societe/create", formData);
+    await axios.post("https://assu1-production.up.railway.app/api/societe/create", formData);
 
     Swal.fire({
       icon: "success",
@@ -50,7 +50,7 @@ export default function SocietePage() {
     });
 
     if (res.isConfirmed) {
-      await axios.delete(`http://assu1-production.up.railway.app/api/societe/${id}`);
+      await axios.delete(`https://assu1-production.up.railway.app/api/societe/${id}`);
       fetchSocietes();
     }
   };

@@ -29,7 +29,7 @@ export default function FormEnqueteur() {
 
   // 🔹 Charger toutes les sociétés
   useEffect(() => {
-    axios.get("http://assu1-production.up.railway.app/api/societe")
+    axios.get("https://assu1-production.up.railway.app/api/societe")
       .then(res => setSocietes(res.data))
       .catch(err => console.error("Erreur chargement sociétés:", err));
   }, []);
@@ -37,11 +37,11 @@ export default function FormEnqueteur() {
   // 🔹 Charger les victimes et les alertes médicales
   useEffect(() => {
     const urlMedecin = formData.societe 
-      ? `http://assu1-production.up.railway.app/api/rapport-medecin?societe=${formData.societe}&role=enqueteur`
-      : `http://assu1-production.up.railway.app/api/rapport-medecin?role=enqueteur`;
+      ? `https://assu1-production.up.railway.app/api/rapport-medecin?societe=${formData.societe}&role=enqueteur`
+      : `https://assu1-production.up.railway.app/api/rapport-medecin?role=enqueteur`;
 
     if (formData.societe) {
-      axios.get(`http://assu1-production.up.railway.app/api/declaration-at?societe=${formData.societe}`)
+      axios.get(`https://assu1-production.up.railway.app/api/declaration-at?societe=${formData.societe}`)
         .then(res => {
           console.log("✅ Victimes chargées pour la société:", formData.societe, res.data);
           setVictimes(res.data);
@@ -94,10 +94,10 @@ export default function FormEnqueteur() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://assu1-production.up.railway.app/api/rapport-enqueteur", formData);
+      const res = await axios.post("https://assu1-production.up.railway.app/api/rapport-enqueteur", formData);
 
       if (formData.rapport_medecin) {
-        await axios.put(`http://assu1-production.up.railway.app/api/rapport-medecin/${formData.rapport_medecin}`, {
+        await axios.put(`https://assu1-production.up.railway.app/api/rapport-medecin/${formData.rapport_medecin}`, {
           enqueteur_at: res.data._id
         });
       }
