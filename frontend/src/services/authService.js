@@ -1,6 +1,6 @@
 // src/services/authService.js
 
-const API_URL = "https://assu1-production.up.railway.app/api/auth"; // ton backend
+const API_URL = "http://assu1-production.up.railway.app/api/auth"; // ton backend
 
 export const login = async (username, password) => {
   const res = await fetch(`${API_URL}/login`, {

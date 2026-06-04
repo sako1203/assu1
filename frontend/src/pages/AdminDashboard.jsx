@@ -226,7 +226,7 @@ export default function AdminDashboard() {
   // =========================
   useEffect(() => {
     // Récupérer les rapports médicaux qui attendent d'être déclarés par le Service AT
-    axios.get("https://assu1-production.up.railway.app/api/rapport-medecin?role=service-at")
+    axios.get("http://assu1-production.up.railway.app/api/rapport-medecin?role=service-at")
       .then(res => setPendingInitialReports(res.data))
       .catch(err => console.error("Erreur notifications Service AT:", err));
   }, [dossier]); // On rafraîchit si le dossier change (après une action)
@@ -358,7 +358,7 @@ export default function AdminDashboard() {
   // =========================
   useEffect(() => {
     axios
-      .get("https://assu1-production.up.railway.app/api/societe")
+      .get("http://assu1-production.up.railway.app/api/societe")
       .then((res) => setSocietes(res.data))
       .catch(console.error);
   }, []);
@@ -382,7 +382,7 @@ export default function AdminDashboard() {
           certificats: allCertificats
         };
         await axios.post(
-          `https://assu1-production.up.railway.app/api/tableaux/certificats/${victimeSelected._id}`,
+          `http://assu1-production.up.railway.app/api/tableaux/certificats/${victimeSelected._id}`,
           data,
           { headers: { "Content-Type": "application/json" } }
         );
@@ -412,7 +412,7 @@ export default function AdminDashboard() {
           quittances: quittances
         };
         await axios.post(
-          `https://assu1-production.up.railway.app/api/tableaux/quittances/${victimeSelected._id}`,
+          `http://assu1-production.up.railway.app/api/tableaux/quittances/${victimeSelected._id}`,
           data,
           { headers: { "Content-Type": "application/json" } }
         );
@@ -442,7 +442,7 @@ export default function AdminDashboard() {
           reglements: reglements
         };
         await axios.post(
-          `https://assu1-production.up.railway.app/api/tableaux/reglements/${victimeSelected._id}`,
+          `http://assu1-production.up.railway.app/api/tableaux/reglements/${victimeSelected._id}`,
           data,
           { headers: { "Content-Type": "application/json" } }
         );
@@ -487,7 +487,7 @@ export default function AdminDashboard() {
 
             const payload = { section: sectionKey, donnees };
             await axios.post(
-              `https://assu1-production.up.railway.app/api/tableaux/backoffice/${victimeSelected._id}`,
+              `http://assu1-production.up.railway.app/api/tableaux/backoffice/${victimeSelected._id}`,
               payload,
               { headers: { "Content-Type": "application/json" } }
             );
@@ -555,7 +555,7 @@ export default function AdminDashboard() {
           totalJoursPayes: totalJoursPayes
         };
         await axios.put(
-          `https://assu1-production.up.railway.app/api/declaration-at/${victimeSelected._id}`,
+          `http://assu1-production.up.railway.app/api/declaration-at/${victimeSelected._id}`,
           data,
           { headers: { "Content-Type": "application/json" } }
         );
@@ -578,13 +578,13 @@ export default function AdminDashboard() {
     console.log("Recherche de victimes pour la société:", societe || "Toutes les sociétés");
     if (societe) {
       res = await axios.get(
-        "https://assu1-production.up.railway.app/api/dashboard/recherche",
+        "http://assu1-production.up.railway.app/api/dashboard/recherche",
         { params: { societe } }
       );
     } else {
       // Fetch all victims if no société is selected
       res = await axios.get(
-        "https://assu1-production.up.railway.app/api/dashboard/recherche"
+        "http://assu1-production.up.railway.app/api/dashboard/recherche"
       );
     }
 
@@ -637,7 +637,7 @@ export default function AdminDashboard() {
     
     try {
       console.log("🔄 Chargement des données pour la victime (ID):", victimeId);
-      const victimeRes = await axios.get(`https://assu1-production.up.railway.app/api/declaration-at/${victimeId}`);
+      const victimeRes = await axios.get(`http://assu1-production.up.railway.app/api/declaration-at/${victimeId}`);
       const victimeData = victimeRes.data;
       console.log("✅ Données victime chargées (API brute):", victimeData);
       
@@ -656,7 +656,7 @@ export default function AdminDashboard() {
 
       // Charger les certificats depuis la nouvelle collection
       try {
-        const certRes = await axios.get(`https://assu1-production.up.railway.app/api/tableaux/certificats/${victimeId}`);
+        const certRes = await axios.get(`http://assu1-production.up.railway.app/api/tableaux/certificats/${victimeId}`);
         const certs = certRes.data || [];
         
         const initialCert = certs.find(c => c.type === "certificat initial") || { id: 'initial', type: "certificat initial", dateStamp: "", dateEnvoi: "", fromDate: "", toDate: "", duree: 0 };
@@ -678,7 +678,7 @@ export default function AdminDashboard() {
 
       // Charger les quittances depuis la nouvelle collection (Bug fix: axios.get was missing)
       try { 
-        const qRes = await axios.get(`https://assu1-production.up.railway.app/api/tableaux/quittances/${victimeId}`);
+        const qRes = await axios.get(`http://assu1-production.up.railway.app/api/tableaux/quittances/${victimeId}`);
         setQuittances(qRes.data || []);
       } catch (e) {
         // If no quittances are found, it's not an error, just an empty array.
@@ -689,7 +689,7 @@ export default function AdminDashboard() {
 
       // Charger les règlements depuis la nouvelle collection
       try {
-        const rRes = await axios.get(`https://assu1-production.up.railway.app/api/tableaux/reglements/${victimeId}`);
+        const rRes = await axios.get(`http://assu1-production.up.railway.app/api/tableaux/reglements/${victimeId}`);
         setReglements(rRes.data || []);
       } catch (e) {
         console.warn("⚠️ Aucun règlement trouvé:", e);
@@ -698,7 +698,7 @@ export default function AdminDashboard() {
 
       // Charger les corrections backoffice depuis la nouvelle collection
       try {
-        const bRes = await axios.get(`https://assu1-production.up.railway.app/api/tableaux/backoffice/${victimeId}`);
+        const bRes = await axios.get(`http://assu1-production.up.railway.app/api/tableaux/backoffice/${victimeId}`);
         const backofficeData = bRes.data || [];
         if (backofficeData.length > 0) {
           const merged = {};
@@ -723,7 +723,7 @@ export default function AdminDashboard() {
   const saveVictimeData = async (victimeId, data) => {
     try {
       await axios.put(
-        `https://assu1-production.up.railway.app/api/declaration-at/${victimeId}`,
+        `http://assu1-production.up.railway.app/api/declaration-at/${victimeId}`,
         data,
         { headers: { "Content-Type": "application/json" } }
       );
@@ -740,7 +740,7 @@ export default function AdminDashboard() {
         certificats: allCertificats
       };
       await axios.post(
-        `https://assu1-production.up.railway.app/api/tableaux/certificats/${victimeId}`,
+        `http://assu1-production.up.railway.app/api/tableaux/certificats/${victimeId}`,
         data,
         { headers: { "Content-Type": "application/json" } }
       );
@@ -757,7 +757,7 @@ export default function AdminDashboard() {
         quittances: quittances
       };
       await axios.post(
-        `https://assu1-production.up.railway.app/api/tableaux/quittances/${victimeId}`,
+        `http://assu1-production.up.railway.app/api/tableaux/quittances/${victimeId}`,
         data,
         { headers: { "Content-Type": "application/json" } }
       );
@@ -774,7 +774,7 @@ export default function AdminDashboard() {
         reglements: reglements
       };
       await axios.post(
-        `https://assu1-production.up.railway.app/api/tableaux/reglements/${victimeId}`,
+        `http://assu1-production.up.railway.app/api/tableaux/reglements/${victimeId}`,
         data,
         { headers: { "Content-Type": "application/json" } }
       );
@@ -1349,7 +1349,7 @@ export default function AdminDashboard() {
         if (!donnees || typeof donnees !== "object") return;
 
         await axios.post(
-          `https://assu1-production.up.railway.app/api/tableaux/backoffice/${victime._id}`,
+          `http://assu1-production.up.railway.app/api/tableaux/backoffice/${victime._id}`,
           { section: sectionKey, donnees },
           { headers: { "Content-Type": "application/json" } }
         );

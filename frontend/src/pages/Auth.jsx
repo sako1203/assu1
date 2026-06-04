@@ -14,7 +14,7 @@ export default function Auth() {
   const redirectPath = location.state?.from || "/";
 
   const login = async (username, password) => {
-    const res = await fetch("https://assu1-production.up.railway.app/api/auth/login", {
+    const res = await fetch("http://assu1-production.up.railway.app/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),

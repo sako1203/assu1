@@ -48,7 +48,7 @@ export default function FormResponsable() {
 
   // 🔹 Charger les sociétés
   useEffect(() => {
-    axios.get("https://assu1-production.up.railway.app/api/societe")
+    axios.get("http://assu1-production.up.railway.app/api/societe")
       .then(res => setSocietes(res.data))
       .catch(err => console.error("Erreur chargement sociétés:", err));
   }, []);
@@ -57,7 +57,7 @@ export default function FormResponsable() {
   // 🔹 Charger les victimes (pour l'autocomplete des Déclarations AT existantes)
   useEffect(() => {
     if (formData.societe) {
-      axios.get(`https://assu1-production.up.railway.app/api/declaration-at?societe=${formData.societe}`)
+      axios.get(`http://assu1-production.up.railway.app/api/declaration-at?societe=${formData.societe}`)
         .then(res => setVictimes(res.data))
         .catch(err => console.error("Erreur chargement victimes pour autocomplete:", err));
     } else {
@@ -75,8 +75,8 @@ export default function FormResponsable() {
   // 🔹 Charger les rapports médicaux en attente (pour les notifications)
   useEffect(() => {
     const urlMedecin = formData.societe
-      ? `https://assu1-production.up.railway.app/api/rapport-medecin?societe=${formData.societe}&role=responsable`
-      : `https://assu1-production.up.railway.app/api/rapport-medecin?role=responsable`;
+      ? `http://assu1-production.up.railway.app/api/rapport-medecin?societe=${formData.societe}&role=responsable`
+      : `http://assu1-production.up.railway.app/api/rapport-medecin?role=responsable`;
 
     axios.get(urlMedecin)
       .then(res => {
@@ -157,11 +157,11 @@ export default function FormResponsable() {
     }
 
     try {
-      const res = await axios.post("https://assu1-production.up.railway.app/api/rapport-responsable", formData);
+      const res = await axios.post("http://assu1-production.up.railway.app/api/rapport-responsable", formData);
       
       // Marquer le rapport médecin comme traité par le responsable
       if (formData.rapport_medecin) {
-        await axios.put(`https://assu1-production.up.railway.app/api/rapport-medecin/${formData.rapport_medecin}`, {
+        await axios.put(`http://assu1-production.up.railway.app/api/rapport-medecin/${formData.rapport_medecin}`, {
           responsable_at: res.data._id
         });
       }
